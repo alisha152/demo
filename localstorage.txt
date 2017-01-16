@@ -1,0 +1,47 @@
+function processForm(){
+
+var locate = document.myform.locate.value;
+var details = document.myform.details.value;
+var storeData = []; 
+localStorage.setItem("locate", JSON.stringify(locate));
+localStorage.setItem("details", JSON.stringify(details));
+alert("Saved: " + localStorage.getItem("locate") + ", and " + localStorage.getItem("details"));
+
+var date = new Date,
+    day = date.getDate(),
+    month = date.getMonth() + 1,
+    year = date.getFullYear(),
+    hour = date.getHours(),
+    minute = date.getMinutes(),
+    ampm = hour > 12 ? "PM" : "AM";    
+    hour = hour % 12;
+    hour = hour ? hour : 12; // zero = 12
+    minute = minute > 9 ? minute : "0" + minute;
+    hour = hour > 9 ? hour : "0" + hour;
+
+    date = month + "/" + day + "/" + year + " " + hour + ":" + minute +  " " + ampm;
+
+localStorage.setItem("date", JSON.stringify(date));
+
+storeData.push(locate, details, date);
+localStorage.setItem("storeData", JSON.stringify(storeData));   
+}
+
+function clearForm(){
+$('#myform').get(0).reset();
+}
+
+function retrieveFormInfo(){
+
+var data = JSON.parse(localStorage.getItem("storeData"));   
+
+var locate = JSON.parse(localStorage.getItem("locate"));
+$("#locate2").html("Place: " + locate);
+
+var details = JSON.parse(localStorage.getItem("details"));
+$("#details2").html("Description: " + details);
+
+var date = JSON.parse(localStorage.getItem("date"));
+$("#date").html(date);
+
+}

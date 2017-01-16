@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign up</title>
+	<link rel="shortcut icon" href="icon.ico" />
+	    <meta charset="utf-8">
+</head>
+<body style="margin:0px;">
+		<div style="padding-top:10px; color:black; font-family:arial; width:980px;margin:0 auto; ">
+			<center> <form  autocomplete="on" accept-charset="UTF-8" name='signup' onSubmit="return submit1(formValidation)">
+				<div><input type="text" id="nme" placeholder="Name" style="margin:5px;width:250px; border-radius:5px;line-height: 1.34em;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></div>
+				<div><input type="PASSWORD" id="pas" placeholder="Password" style="margin:5px;width:250px; border-radius:5px;line-height: 1.34em;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></div>
+				<div><input type="text" id="cont" placeholder="Contact" style="margin:5px;width:250px; border-radius:5px;line-height: 1.34em;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></div>
+				<div><input type="email" id="em" placeholder="Email" style="margin:5px;width:250px; border-radius:5px;line-height: 1.34em;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></div>
+				<div><textarea rows="4" cols="50" id="address1" placeholder="Temporary Address" style="margin:5px;width:250px; border-radius:5px;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></textarea></div>
+				<div><textarea rows="4" cols="50" id="address2" placeholder="Permanent Address" style="margin:5px;width:250px; border-radius:5px;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></textarea></div>
+				<div><input type="submit" name="submit" value="Sign Up" style="background-color:#3b5998;border:1px solid black; color:white;" /></div>
+			</form> </center>
+		</div>
+	<script>
+		function submit1(formValidation) {
+			if(formValidation())
+			{
+				var uname=document.signup.nme;
+				var upass=document.signup.pas;
+				var ucontact=document.signup.cont;
+				var uemail=document.signup.em;
+				var uadd1=document.signup.address1;
+				var uadd2=document.signup.address2;
+				var obj={};
+				obj.un=uname.value;
+				obj.up=upass.value;
+				obj.uc=ucontact.value;
+				obj.ue=uemail.value;
+				obj.uta=uadd1.value;
+				obj.upa=uadd2.value;
+				var myJSON = JSON.stringify(obj);
+				localStorage.setItem("testJSON", myJSON);
+				var text = localStorage.getItem("testJSON");
+				var myobj = JSON.parse(text);
+				window.location.assign("pqr.html");
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		function formValidation() {
+			var uname=document.signup.nme;
+			var upass=document.signup.pas;
+			var ucontact=document.signup.cont;
+			var uemail=document.signup.em;
+			var uadd1=document.signup.address1;
+			var uadd2=document.signup.address2;
+			if (allLetter(uname)) {
+				if (passid_validation(upass,5,12)) {
+					if (validateContact(ucontact)) {
+						if (validateEmail(uemail)) {
+							if (alphanumeric1(uadd1)) {
+								if (alphanumeric2(uadd2)) {
+									return true;
+								}else {return false;}
+							}else {return false;}
+						}else {return false;}
+					}else {return false;}
+				}else {return false;}
+			}else {return false;}
+			
+		}
+		    function passid_validation(upass,mx,my)  
+    {  
+    var passid_len = upass.value.length;  
+    if (passid_len == 0 ||passid_len >= my || passid_len < mx)  
+    {  
+    alert("Password should not be empty / length be between "+mx+" to "+my);  
+    upass.focus();  
+    return false;  
+    }  
+    return true;  
+    }  
+    
+        function allLetter(uname)  
+    {   
+    var letters = /^[A-Za-z]+$/;  
+    var ab=uname.value.length;
+    if(uname.value.match(letters) && ab>4 )  
+    {  
+    return true;  
+    }  
+    else  
+    {  
+    alert('Username must have alphabet characters only & length greater than 4');  
+    uname.focus();  
+    return false;  
+    }  
+    }  
+    
+        function alphanumeric1(uadd1)  
+    {   
+    var letters = /^[0-9a-zA-Z]+$/;  
+    var cd=uadd1.value.length;
+    if(uadd1.value.match(letters) && cd>4)  
+    {  
+    return true;  
+    }  
+    else  
+    {  
+    alert('temporary address must have alphanumeric characters only & length greater than 4');  
+    uadd1.focus();  
+    return false;  
+    }  
+    }  
+    
+        function alphanumeric2(uadd2)  
+    {   
+    var letters = /^[0-9a-zA-Z]+$/;  
+    var ef=uadd2.value.length;
+    if(uadd2.value.match(letters) && ef>4)  
+    {  
+    return true;  
+    }  
+    else  
+    {  
+    alert('permanent address must have alphanumeric characters only & length greater than 4');  
+    uadd2.focus();  
+    return false;  
+    }  
+    }  
+    
+        function validateEmail(uemail)  
+    {  
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+    if(uemail.value.match(mailformat))  
+    {  
+    return true;  
+    }  
+    else  
+    {  
+    alert("You have entered an invalid email address!");  
+    uemail.focus();  
+    return false;  
+    }  
+    }  
+    
+    function validateContact(ucontact) {
+    var gh=ucontact.value.length;
+    if(!(isNaN(ucontact)) || gh<4)
+    	{
+			   
+			alert("Contact should be numeric only");
+			ucontact.focus();	
+			return false;
+    	}
+    else {
+    		
+			  	return true;
+    	}
+    }
+	</script>
+</body>
+</html>

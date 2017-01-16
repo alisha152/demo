@@ -1,0 +1,54 @@
+<html>
+  <head>
+	<title>CALCULATOR</title>
+	<style>
+		table,th,td{
+			border: 1px solid black;
+			
+			}
+		th,td{
+		padding:25px;
+		}
+		table#t01
+		{
+		background-color: gray;
+		color: black;
+		}
+	</style>
+  </head>
+	<body>
+		
+		<table  id="t01" style="width:40%"> 
+		   <caption>CALCULATOR</caption>
+			<tr>
+				<th colspan="4"></th>
+			</tr>
+			<tr>
+				<th><input type=button value="7" OnClick="calc.display.value+='7'"></th>
+				<th><input type=button value="8" OnClick="calc.display.value+='8'"></th>
+				<th><input type=button value="9" OnClick="calc.display.value+='9'"></th>
+				<th><input type=button value="/" OnClick="calc.display.value+='/'"></th>
+			</tr>
+			<tr>
+				<th><input type=button value="4" OnClick="calc.display.value+='4'"></th>
+				<th><input type=button value="5" OnClick="calc.display.value+='5'"></th>
+				<th><input type=button value="6" OnClick="calc.display.value+='6'"></th>
+				<th><input type=button value="*" OnClick="calc.display.value+='*'"></th>
+			</tr>
+			<tr>
+				<th><input type=button value="1" OnClick="calc.display.value+='1'"></th>
+				<th><input type=button value="2" OnClick="calc.display.value+='2'"></th>
+				<th><input type=button value="3" OnClick="calc.display.value+='3'"></th>
+				<th><input type=button value="-" OnClick="calc.display.value+='-'"></th>
+			</tr>
+			<tr>
+				<th><input type=button value="C" OnClick="calc.display.value=''"></th>
+				<th><input type=button value="0" OnClick="calc.display.value+='0'"></th>
+				<th><input type=button value="=" OnClick="calc.display.value=eval(calc.display.value)"></th>
+				<th><input type=button value="+" OnClick="calc.display.value+='+'"></th>
+			</tr>
+		</table>
+			
+			
+	</body>
+</html>

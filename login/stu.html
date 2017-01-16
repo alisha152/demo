@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link rel="shortcut icon" href="icon.ico" />
+</head>
+<body style="margin:0px;" onload="d()">
+	<header style="background-color:#67ae55; height:90px;border-bottom:1px solid black; min-width:980px;">
+		<div style="text-align:center;padding-top:20px; color:black; font-size:45px; font-family:arial; width:980px;margin:0 auto;">
+		Home
+		</div>
+	</header>
+	<div style="min-width:980px;height:526px; background: linear-gradient(white, #7f7f7f);  font-family:arial;">
+		<center>
+			<span id="s1"></span>
+		</center>
+	</div>
+	<script>
+			function d() {
+				var text = localStorage.getItem("testJSON");
+				var myobj = JSON.parse(text);
+				var vp=myobj.un;
+				document.getElementById("s1").innerHTML="welcome "+vp;
+			}
+	</script>
+</body>
+</html>

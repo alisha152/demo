@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign in</title>
+	<link rel="shortcut icon" href="icon.ico" />
+	    <meta charset="utf-8">
+</head>
+<body style="margin:0px;">
+		<div style="padding-top:10px; color:black; font-family:arial; width:980px;margin:0 auto; ">
+			<center> <form  autocomplete="on" accept-charset="UTF-8" name='signup' onSubmit="return submit1(formValidation)">
+				<div><input type="email" id="em" placeholder="Email" style="margin:5px;width:250px; border-radius:5px;line-height: 1.34em;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></div>
+				<div><input type="PASSWORD" id="pas" placeholder="Password" style="margin:5px;width:250px; border-radius:5px;line-height: 1.34em;
+																											font-size:18px; border: 1px solid #bdc7d8; padding: 8px 10px;"/></div>
+				<div><input type="submit" name="submit" value="Sign In" style="background-color:#3b5998;border:1px solid black; color:white;" /></div>
+			</form> </center>
+		</div>
+	<script>
+		function submit1(formValidation) {
+			if(formValidation())
+			{
+				var upass=document.signup.pas;
+				var uemail=document.signup.em;
+				var text = localStorage.getItem("testJSON");
+				var myobj = JSON.parse(text);
+				var vp=myobj.up;
+				var ve=myobj.ue;
+				if(upass.value.match(vp.value) && uemail.value.match(ve.value))
+				{
+				window.location.assign("stu.html");
+				}
+				
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		function formValidation() {
+			
+			var uemail=document.signup.em;
+			var upass=document.signup.pas;
+			
+			if (validateEmail(uemail)) {
+				if (passid_validation(upass,5,12)) {
+					return true;				
+				}else {return false;}
+			}else {return false;}
+			
+		}
+		    function passid_validation(upass,mx,my)  
+    {  
+    var passid_len = upass.value.length;  
+    if (passid_len == 0 ||passid_len >= my || passid_len < mx)  
+    {  
+    alert("Password should not be empty / length be between "+mx+" to "+my);  
+    upass.focus();  
+    return false;  
+    }  
+    return true;  
+    }  
+    
+        
+        function validateEmail(uemail)  
+    {  
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+    if(uemail.value.match(mailformat))  
+    {  
+    return true;  
+    }  
+    else  
+    {  
+    alert("You have entered an invalid email address!");  
+    uemail.focus();  
+    return false;  
+    }  
+    }  
+    
+	</script>
+</body>
+</html>

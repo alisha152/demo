@@ -1,0 +1,20 @@
+var d=function(){ console.log("1"); setTimeout(function(){ console.log("3"); }, 500); console.log("2");}
+
+
+
+
+var i = 0;
+(function loop(){
+  if (i++ > 20) return;
+  setTimeout(function(){
+    console.log(i);
+    loop();
+  }, 500);
+})();
+
+
+
+for(i=0;i<=10;i++)
+{
+setTimeout(function,1000);
+}

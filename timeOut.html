@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+		<head>
+				<title>
+						Time out check				
+				</title>		
+		</head>
+		
+		<body>
+			
+			<div style="height: 500px; width: 500px; margin: 0 auto;">
+				<center>
+					<button onclick="f1(i)">Click for Synchronous printing</button><br>				
+				</center>
+			</div>	
+					
+			<script type="text/javascript" >
+			
+				function f1(i) {
+  					setTimeout(function() { console.log(i); }, i*1000+1000);
+				}
+
+				for (i = 1; i < 10; i++){
+  					f1(i);				
+				}
+		</script>			
+			
+		</body>
+
+</html>
